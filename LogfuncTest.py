@@ -1,248 +1,223 @@
-# -*- coding: utf8 -*-
-__version__ = '1.0'
-__author__ = 'Jan Kasper(jan.kasper@students.tbs1.de)'
-
 import unittest
-import Logfunc
-from Logfunc import ANDGate,ORGate,NANDGate
+from Logfunc import *
 
-class OrGateTest(unittest.TestCase):
+
+class ANDGateTest(unittest.TestCase):
+    def testcase_00(self):
+        a = ANDGate()
+        self.assertFalse(a.Inputs[0], "Class ANDGate: Testcase 0 failed.")
+        self.assertFalse(a.Inputs[1], "Class ANDGate: Testcase 0 failed.")
+        self.assertFalse(a.Output, "Class ANDGate: Testcase 0 failed.")
 
     def testcase_01(self):
-
-        o = ORGate()
-
-        o.Input0 = False
-
-        o.Input1 = False
-
-        o.execute()
-
-        self.assertFalse(o.Output, "Class OrGate: Testcase 1 failed.")
-
-
+        a = ANDGate()
+        a.Inputs[0] = False
+        a.Inputs[1] = False
+        a.execute()
+        self.assertFalse(a.Output, "Class ANDGate: Testcase 1 failed.")
 
     def testcase_02(self):
-
-        o = ORGate()
-
-        o.Input0 = True
-
-        o.Input1 = False
-
-        o.execute()
-
-        self.assertTrue(o.Output, "Class OrGate: Testcase 2 failed.")
-
-
+        a = ANDGate()
+        a.Inputs[0] = True
+        a.Inputs[1] = False
+        a.execute()
+        self.assertFalse(a.Output, "Class ANDGate: Testcase 2 failed.")
 
     def testcase_03(self):
-
-        o = ORGate()
-
-        o.Input0 = False
-
-        o.Input1 = True
-
-        o.execute()
-
-        self.assertTrue(o.Output, "Class OrGate: Testcase 3 failed.")
-
-
+        a = ANDGate()
+        a.Inputs[0] = False
+        a.Inputs[1] = True
+        a.execute()
+        self.assertFalse(a.Output, "Class ANDGate: Testcase 3 failed.")
 
     def testcase_04(self):
+        a = ANDGate()
+        a.Inputs[0] = True
+        a.Inputs[1] = True
+        a.execute()
+        self.assertTrue(a.Output, "Class ANDGate: Testcase 4 failed.")
 
-        o = ORGate()
+    def testcase_05(self):
+        a = ANDGate(4)
+        a.Inputs[0] = True
+        a.Inputs[1] = False
+        a.Inputs[2] = True
+        a.Inputs[3] = True
+        a.execute()
+        self.assertFalse(a.Output, "Class ANDGate: Testcase 5 failed.")
 
-        o.Input0 = True
+    def testcase_06(self):
+        a = ANDGate(4)
+        a.Inputs[0] = True
+        a.Inputs[1] = True
+        a.Inputs[2] = True
+        a.Inputs[3] = True
+        a.execute()
+        self.assertTrue(a.Output, "Class ANDGate: Testcase 6 failed.")
 
-        o.Input1 = True
+class ORGateTest(unittest.TestCase):
 
-        o.execute()
-
-        self.assertTrue(o.Output, "Class OrGate: Testcase 4 failed.")
-
-
-
-
-
-
-class AndGateTest(unittest.TestCase):
+    def testcase_00(self):
+        a = ORGate()
+        self.assertFalse(a.Inputs[0], "Class ORGate: Testcase 0 failed.")
+        self.assertFalse(a.Inputs[1], "Class ORGate: Testcase 0 failed.")
+        self.assertFalse(a.Output, "Class ORGate: Testcase 0 failed.")
 
     def testcase_01(self):
-
-        a = ANDGate()
-
-
-
-        a.Input0 = False
-
-
-
-        a.Input1 = False
-
-
-
+        a = ORGate()
+        a.Inputs[0] = False
+        a.Inputs[1] = False
         a.execute()
-
-
-
-        self.assertFalse(a.Output, "AndGate, Testcase 01 failed!")
-
-
+        self.assertFalse(a.Output, "Class ORGate: Testcase 1 failed.")
 
     def testcase_02(self):
-
-        a = ANDGate()
-
-
-
-        a.Input0 = True
-
-
-
-        a.Input1 = False
-
-
-
+        a = ORGate()
+        a.Inputs[0] = True
+        a.Inputs[1] = False
         a.execute()
-
-
-
-        self.assertFalse(a.Output, "AndGate, Testcase 02 failed!")
-
-
+        self.assertTrue(a.Output, "Class ORGate: Testcase 2 failed.")
 
     def testcase_03(self):
-
-        a = ANDGate()
-
-
-
-        a.Input0 = False
-
-
-
-        a.Input1 = True
-
-
-
+        a = ORGate()
+        a.Inputs[0] = False
+        a.Inputs[1] = True
         a.execute()
-
-
-
-        self.assertFalse(a.Output, "AndGate, Testcase 03 failed!")
-
-
+        self.assertTrue(a.Output, "Class ORGate: Testcase 3 failed.")
 
     def testcase_04(self):
-
-        a = ANDGate()
-
-
-
-        a.Input0 = True
-
-
-
-        a.Input1 = True
-
-
-
+        a = ORGate()
+        a.Inputs[0] = True
+        a.Inputs[1] = True
         a.execute()
+        self.assertTrue(a.Output, "Class ORGate: Testcase 4 failed.")
+
+    def testcase_05(self):
+        a = ORGate(4)
+        a.Inputs[0] = False
+        a.Inputs[1] = False
+        a.Inputs[2] = False
+        a.Inputs[3] = False
+        a.execute()
+        self.assertFalse(a.Output, "Class ORGate: Testcase 5 failed.")
+
+    def testcase_06(self):
+        a = ORGate(4)
+        a.Inputs[0] = False
+        a.Inputs[1] = False
+        a.Inputs[2] = False
+        a.Inputs[3] = True
+        a.execute()
+        self.assertTrue(a.Output, "Class ORGate: Testcase 6 failed.")
 
 
+class XORGateTest(unittest.TestCase):
 
-        self.assertTrue(a.Output, "AndGate, Testcase 04 failed!")
+    def testcase_00(self):
+        a = XORGate()
+        self.assertFalse(a.Inputs[0], "Class XORGate: Testcase 0 failed.")
+        self.assertFalse(a.Inputs[1], "Class XORGate: Testcase 0 failed.")
+        self.assertFalse(a.Output, "Class XORGate: Testcase 0 failed.")
+
+    def testcase_01(self):
+        a = XORGate()
+        a.Inputs[0] = False
+        a.Inputs[1] = False
+        a.execute()
+        self.assertFalse(a.Output, "Class XORGate: Testcase 1 failed.")
+
+    def testcase_02(self):
+        a = XORGate()
+        a.Inputs[0] = True
+        a.Inputs[1] = False
+        a.execute()
+        self.assertTrue(a.Output, "Class XORGate: Testcase 2 failed.")
+
+    def testcase_03(self):
+        a = XORGate()
+        a.Inputs[0] = False
+        a.Inputs[1] = True
+        a.execute()
+        self.assertTrue(a.Output, "Class XORGate: Testcase 3 failed.")
+
+    def testcase_04(self):
+        a = XORGate()
+        a.Inputs[0] = True
+        a.Inputs[1] = True
+        a.execute()
+        self.assertFalse(a.Output, "Class XORGate: Testcase 4 failed.")
+
+    def testcase_05(self):
+        a = XORGate(4)
+        a.Inputs[0] = False
+        a.Inputs[1] = True
+        a.Inputs[2] = True
+        a.Inputs[3] = False
+        a.execute()
+        self.assertFalse(a.Output, "Class XORGate: Testcase 5 failed.")
+
+    def testcase_06(self):
+        a = XORGate(4)
+        a.Inputs[0] = False
+        a.Inputs[1] = False
+        a.Inputs[2] = False
+        a.Inputs[3] = True
+        a.execute()
+        self.assertTrue(a.Output, "Class XORGate: Testcase 6 failed.")
 
 class NANDGateTest(unittest.TestCase):
 
-    def testcase_01(self):
-
+    def testcase_00(self):
         a = NANDGate()
+        self.assertFalse(a.Inputs[0], "Class NANDGate: Testcase 0 failed.")
+        self.assertFalse(a.Inputs[1], "Class NANDGate: Testcase 0 failed.")
+        self.assertTrue(a.Output, "Class NANDGate: Testcase 0 failed.")
 
-
-
-        a.Input0 = False
-
-
-
-        a.Input1 = False
-
-
-
+    def testcase_01(self):
+        a = NANDGate()
+        a.Inputs[0] = False
+        a.Inputs[1] = False
         a.execute()
-
-
-
-        self.assertTrue(a.Output, "NANDGate, Testcase 01 failed!")
-
-
+        self.assertTrue(a.Output, "Class NANDGate: Testcase 1 failed.")
 
     def testcase_02(self):
-
         a = NANDGate()
-
-
-
-        a.Input0 = True
-
-
-
-        a.Input1 = False
-
-
-
+        a.Inputs[0] = True
+        a.Inputs[1] = False
         a.execute()
-
-
-
-        self.assertTrue(a.Output, "NANDGate, Testcase 02 failed!")
-
-
+        self.assertTrue(a.Output, "Class NANDGate: Testcase 2 failed.")
 
     def testcase_03(self):
-
         a = NANDGate()
-
-
-
-        a.Input0 = False
-
-
-
-        a.Input1 = True
-
-
-
+        a.Inputs[0] = False
+        a.Inputs[1] = True
         a.execute()
-
-
-
-        self.assertTrue(a.Output, "NANDGate, Testcase 03 failed!")
-
-
+        self.assertTrue(a.Output, "Class NANDGate: Testcase 3 failed.")
 
     def testcase_04(self):
-
         a = NANDGate()
-
-
-
-        a.Input0 = True
-
-
-
-        a.Input1 = True
-
-
-
+        a.Inputs[0] = True
+        a.Inputs[1] = True
         a.execute()
+        self.assertFalse(a.Output, "Class NANDGate: Testcase 4 failed.")
 
+    def testcase_05(self):
+        a = NANDGate(4)
+        a.Inputs[0] = True
+        a.Inputs[1] = True
+        a.Inputs[2] = True
+        a.Inputs[3] = True
+        a.execute()
+        self.assertFalse(a.Output, "Class NANDGate: Testcase 5 failed.")
 
+    def testcase_06(self):
+        a = NANDGate(4)
+        a.Inputs[0] = False
+        a.Inputs[1] = True
+        a.Inputs[2] = True
+        a.Inputs[3] = False
+        a.execute()
+        self.assertTrue(a.Output, "Class NANDGate: Testcase 6 failed.")
 
-        self.assertFalse(a.Output, "NANDGate, Testcase 04 failed!")
 
 if __name__ == "__main__":
-
     unittest.main()
